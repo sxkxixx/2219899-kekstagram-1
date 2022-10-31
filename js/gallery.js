@@ -6,6 +6,7 @@ const setPhotoSettings = (user) => {
   photo.addEventListener('click', () => {
     openPhoto(user);
   });
+  return photo;
 };
 
 export {setPhotoSettings};
