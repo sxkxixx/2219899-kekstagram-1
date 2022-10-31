@@ -1,6 +1,7 @@
-import {createDescription, photosAmount} from './create-data.js';
-import {createUserPicture, getFilledFragment} from './draw.js';
+import {arrayObj} from './create-data.js';
+import {getFilledFragment} from './draw.js';
+import {setPhotoSettings} from './gallery.js';
 
-const arrayObj = Array.from({length: photosAmount}).map((value, index) => createDescription(index + 1));
+
 const pictureContainer = document.querySelector('.pictures');
-pictureContainer.append(getFilledFragment(arrayObj, createUserPicture));
+pictureContainer.append(getFilledFragment(arrayObj, setPhotoSettings));

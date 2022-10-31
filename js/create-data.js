@@ -32,5 +32,5 @@ const createDescription = (id) => ({
   likes: getRandomNum(likesAmount.min, likesAmount.max),
   comments: Array.from({length: getRandomNum(1, 6)}).map((value, index) => createCommentObj(index + 1))
 });
-
-export {createDescription, photosAmount};
+const arrayObj = Array.from({length: photosAmount}).map((value, index) => createDescription(index + 1));
+export {arrayObj};
