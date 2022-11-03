@@ -16,4 +16,5 @@ const getFilledFragment = (array, fn) => {
   return fragment;
 };
 
+
 export {createUserPicture, getFilledFragment};

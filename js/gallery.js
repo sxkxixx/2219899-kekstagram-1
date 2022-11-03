@@ -12,4 +12,3 @@ const setPhotoSettings = (user) => {
 
 const pictureContainer = document.querySelector('.pictures');
 pictureContainer.append(getFilledFragment(arrayObj, setPhotoSettings));
-
