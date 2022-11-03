@@ -19,8 +19,7 @@ const fillComments = (comments) => {
 };
 
 const renderPhoto = (photo) => {
-  fullScreen.querySelector('.big-picture__img').src = photo.url;
-  fullScreen.querySelector('.likes-count').textContent = photo.likes;
+  fullScreen.querySelector('.big-picture__img img').src = photo.url;
   fullScreen.querySelector('.comments-count').textContent = photo.comments.length;
   fullScreen.querySelector('.social__caption').textContent = photo.description;
   fillComments(photo.comments);

@@ -1,5 +1,4 @@
 import {getRandomNum, getRandomElement} from './util.js';
-
 const photosAmount = 25;
 const likesAmount = {min: 15, max: 200};
 
@@ -17,7 +16,6 @@ const DESCRIPTION = ['Это я в коридоре был, сейчас дом�
   'Не могу стоять, пока другие работают… Пойду полежу.',
   'Всё отлично!'];
 
-
 const createCommentObj = (id) => ({
   id: getRandomNum(1, 500),
   avatar: `img/avatar-${id}.svg`,
@@ -32,5 +30,6 @@ const createDescription = (id) => ({
   likes: getRandomNum(likesAmount.min, likesAmount.max),
   comments: Array.from({length: getRandomNum(1, 6)}).map((value, index) => createCommentObj(index + 1))
 });
+
 const arrayObj = Array.from({length: photosAmount}).map((value, index) => createDescription(index + 1));
 export {arrayObj};

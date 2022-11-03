@@ -1,4 +1,4 @@
-const template = document.querySelector('#picture').content;
+const template = document.querySelector('#picture').content.querySelector('.picture');
 
 const createUserPicture = (user) => {
   const userPicture = template.cloneNode(true);
@@ -15,6 +15,5 @@ const getFilledFragment = (array, fn) => {
   }
   return fragment;
 };
-
 
 export {createUserPicture, getFilledFragment};
