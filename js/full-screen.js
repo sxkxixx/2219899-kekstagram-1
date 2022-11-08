@@ -52,3 +52,4 @@ const openPhoto = (photo) => {
 };
 
 export {renderPhoto, openPhoto};
+

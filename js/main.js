@@ -3,4 +3,3 @@ import {renderUploadForm} from './form.js';
 
 renderUploadForm();
 
-

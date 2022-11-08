@@ -30,3 +30,4 @@ const validateForm = (form, hashtags, comment) => {
 };
 
 export {validateForm, onFocusPreventClose};
+
