@@ -1,3 +1,5 @@
+import {isEscapeKey} from './util.js';
+
 const fullScreen = document.querySelector('.big-picture');
 const body = document.body;
 const closeButton = fullScreen.querySelector('#picture-cancel');
@@ -22,21 +24,22 @@ const renderPhoto = (photo) => {
   fullScreen.querySelector('.big-picture__img img').src = photo.url;
   fullScreen.querySelector('.comments-count').textContent = photo.comments.length;
   fullScreen.querySelector('.social__caption').textContent = photo.description;
+  fullScreen.querySelector('.likes-count').textContent = photo.likes;
   fillComments(photo.comments);
 };
 
 const closeByEscape = (evt) => {
-  if (evt.key === 'Escape'){
+  if (isEscapeKey(evt)){
     body.classList.remove('modal-open');
     fullScreen.classList.add('hidden');
-    document.removeEventListener('keydown', () => closeByEscape);
+    document.removeEventListener('keydown', closeByEscape);
   }
 };
 
 const closePhoto = () => {
   body.classList.remove('modal-open');
   fullScreen.classList.add('hidden');
-  document.removeEventListener('keydown', () => closeByEscape);
+  document.removeEventListener('keydown', closeByEscape);
 };
 
 
@@ -49,4 +52,3 @@ const openPhoto = (photo) => {
 };
 
 export {renderPhoto, openPhoto};
-
