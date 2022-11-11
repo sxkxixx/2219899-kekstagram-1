@@ -4,8 +4,9 @@ const getRandomNum = (a, b) => {
   return Math.floor(Math.random() * (upper - lower + 1) + lower);
 };
 
-// eslint-disable-next-line no-unused-vars
 const isRightString = (str, maxLen) => String(str).length <= maxLen;
 const getRandomElement = (array) => array[getRandomNum(0, array.length - 1)];
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomNum, getRandomElement};
+export {getRandomNum, getRandomElement, isRightString, isEscapeKey};
+
