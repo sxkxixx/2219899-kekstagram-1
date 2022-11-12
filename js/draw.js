@@ -8,13 +8,4 @@ const createUserPicture = (user) => {
   return userPicture;
 };
 
-const getFilledFragment = (array, fn) => {
-  const fragment = document.createDocumentFragment();
-  for (let i = 0; i < array.length; i++){
-    fragment.append(fn(array[i]));
-  }
-  return fragment;
-};
-
-
-export {createUserPicture, getFilledFragment};
+export {createUserPicture};
