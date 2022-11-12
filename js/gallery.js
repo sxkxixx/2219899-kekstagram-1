@@ -1,6 +1,5 @@
-import {createUserPicture, getFilledFragment} from './draw.js';
+import {createUserPicture} from './draw.js';
 import {openPhoto} from './full-screen.js';
-import {arrayObj} from './data.js';
 
 const setPhotoSettings = (user) => {
   const photo = createUserPicture(user);
@@ -11,4 +10,13 @@ const setPhotoSettings = (user) => {
 };
 
 const pictureContainer = document.querySelector('.pictures');
-pictureContainer.append(getFilledFragment(arrayObj, setPhotoSettings));
+
+const appendThumbnails = (array) => {
+  const fragment = document.createDocumentFragment();
+  for (let i = 0; i < array.length; i++) {
+    fragment.append(setPhotoSettings(array[i]));
+  }
+  pictureContainer.append(fragment);
+};
+
+export {appendThumbnails};

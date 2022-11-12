@@ -28,7 +28,7 @@ const createDescription = (id) => ({
   url: `photos/${id}.jpg`,
   description: getRandomElement(DESCRIPTION),
   likes: getRandomNum(likesAmount.min, likesAmount.max),
-  comments: Array.from({length: getRandomNum(1, 6)}).map((value, index) => createCommentObj(index + 1))
+  comments: Array.from({length: getRandomNum(1, 11)}).map((value, index) => createCommentObj(index + 1))
 });
 
 const arrayObj = Array.from({length: photosAmount}).map((value, index) => createDescription(index + 1));
