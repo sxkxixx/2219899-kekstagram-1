@@ -22,8 +22,7 @@ const validateForm = (form, hashtags, comment) => {
     errorTextParent: 'img-upload__field-wrapper',
     errorTextClass: 'img-upload__field-wrapper__error'
   });
-  pristine.addValidator(hashtags, isCorrectHashtags,
-    'Уникальные хештеги, каждый не более 20 символов, должны быть разделены пробелом');
+  pristine.addValidator(hashtags, isCorrectHashtags, 'Поле ввода имеет уникальные хештеги, которые начинаются с решетки и имеют длину не более 20 символов');
   pristine.addValidator(comment, isCorrectComment, 'Комментарий не более 140 символов');
 
   return pristine.validate();
