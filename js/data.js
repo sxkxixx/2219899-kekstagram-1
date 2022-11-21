@@ -18,7 +18,7 @@ const DESCRIPTION = ['Это я в коридоре был, сейчас дом�
 
 const createCommentObj = (id) => ({
   id: getRandomNum(1, 500),
-  avatar: `img/avatar-${id}.svg`,
+  avatar: `img/avatar-${id % 6 + 1}.svg`,
   message: getRandomElement(MESSAGES),
   name: getRandomElement(NAMES)
 });
