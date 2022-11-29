@@ -1,7 +1,8 @@
-import {isEscapeKey} from './util.js';
+import {isEscapeKey, showAlert} from './util.js';
 import {validateForm, onFocusPreventClose} from './validate-form.js';
 import {onFilterChange, disableSlider} from './image-effects.js';
 import {onResizeButtonClick} from './image-scale.js';
+import {sendData} from './api.js';
 
 const image = document.querySelector('.img-upload__preview').querySelector('img');
 const effectsField = document.querySelector('.img-upload__effects');
@@ -13,6 +14,17 @@ const uploadButton = document.querySelector('#upload-file');
 const cancelButton = document.querySelector('#upload-cancel');
 const hashtagsInput = document.querySelector('.text__hashtags');
 const commentInput = document.querySelector('.text__description');
+const submitButton = document.querySelector('.img-upload__submit');
+
+const blockSubmitButton = () => {
+  // submitButton.textContent = 'Публикую...';
+  submitButton.disabled = 'true';
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Опубликовать';
+};
 
 const onEscapeKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -45,11 +57,19 @@ const openOverlay = () => {
 const renderUploadForm = () => {
   uploadButton.addEventListener('change', openOverlay);
   form.addEventListener('submit', (evt) => {
-    if (!validateForm(form, hashtagsInput, commentInput)) {
-      evt.preventDefault();
+    evt.preventDefault();
+    if (validateForm(form, hashtagsInput, commentInput)) {
+      sendData(() => {
+        blockSubmitButton();
+        setTimeout(showAlert, 1500);
+      },
+      () => {
+        showAlert(true);
+      },
+      new FormData(evt.target), unblockSubmitButton);
     }
   });
 };
 
-export {renderUploadForm};
+export {renderUploadForm, closeOverlay};
 
