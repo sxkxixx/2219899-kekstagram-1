@@ -1,9 +1,8 @@
-import {appendThumbnails} from './gallery.js';
 import {renderUploadForm} from './form.js';
 import {createSlider} from './image-effects.js';
 import {getData} from './api.js';
+import {showFilteredPictures} from './image-filter.js';
 
-getData(appendThumbnails);
+getData(showFilteredPictures);
 renderUploadForm();
 createSlider();
-
