@@ -1,5 +1,3 @@
-// const ALERT_SHOW_TIME = 5000;
-
 import {closeOverlay} from './form.js';
 
 const getRandomNum = (a, b) => {
@@ -11,6 +9,17 @@ const getRandomNum = (a, b) => {
 const isRightString = (str, maxLen) => String(str).length <= maxLen;
 const getRandomElement = (array) => array[getRandomNum(0, array.length - 1)];
 const isEscapeKey = (evt) => evt.key === 'Escape';
+
+const getUniqueElementsArray = (arr, count) => {
+  const copyArray = arr.slice();
+  const newArray = [];
+  for (let i = 0; i < count; i++) {
+    const randomIndex = getRandomNum(0, copyArray.length - 1);
+    newArray.push(copyArray[randomIndex]);
+    copyArray.splice(randomIndex, 1);
+  }
+  return newArray;
+};
 
 
 const showAlert = (isError) => {
@@ -24,8 +33,16 @@ const showAlert = (isError) => {
     popup.remove();
     closeOverlay();
   });
-
 };
 
-export {getRandomNum, getRandomElement, isRightString, isEscapeKey, showAlert};
+
+function debounce (callback, timeoutDelay = 500) {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
+
+export {getRandomNum, getRandomElement, isRightString, isEscapeKey, showAlert, debounce, getUniqueElementsArray};
 
