@@ -15,10 +15,12 @@ const cancelButton = document.querySelector('#upload-cancel');
 const hashtagsInput = document.querySelector('.text__hashtags');
 const commentInput = document.querySelector('.text__description');
 const submitButton = document.querySelector('.img-upload__submit');
+const fileChooser = document.querySelector('.img-upload__start input[type=file]');
+
 
 const blockSubmitButton = () => {
-  // submitButton.textContent = 'Публикую...';
-  submitButton.disabled = 'true';
+  submitButton.textContent = 'Публикую...';
+  submitButton.disabled = true;
 };
 
 const unblockSubmitButton = () => {
@@ -56,6 +58,10 @@ const openOverlay = () => {
 
 const renderUploadForm = () => {
   uploadButton.addEventListener('change', openOverlay);
+  fileChooser.addEventListener('change', () => {
+    const file = fileChooser.files[0];
+    image.src = URL.createObjectURL(file);
+  });
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     if (validateForm(form, hashtagsInput, commentInput)) {
