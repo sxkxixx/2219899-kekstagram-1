@@ -1,35 +1,32 @@
-const getData = (onSuccess) => {
-  fetch('https://26.javascript.pages.academy/kekstagram/data')
+const urlToGet = 'https://26.javascript.pages.academy/kekstagram/data';
+const urlToPost = 'https://26.javascript.pages.academy/kekstagram';
+
+const getData = (onSuccess, onFail) => {
+  fetch(urlToGet)
     .then((response) => {
       if (response.ok) {
         return response.json();
       }
       throw new Error();
     })
-    .then((data) => {
-      onSuccess(data);
-    })
-    .catch(() => {});
+    .then((data) => onSuccess(data))
+    .catch(() => onFail());
 };
 
-const sendData = (onSuccess, onFail, body, onFinal) => {
-  fetch(
-    'https://26.javascript.pages.academy/kekstagram',
+const sendData = (onSuccess, onFail, body) => {
+  fetch(urlToPost,
     {
       method: 'POST',
-      body,
-    },
-  )
+      body: body
+    })
     .then((response) => {
       if (response.ok) {
         onSuccess();
-      } else {
-        onFail('Не удалось отправить форму. Попробуйте ещё раз');
+        return;
       }
+      throw new Error();
     })
-    .catch(() => {
-      onFail('Не удалось отправить форму. Попробуйте ещё раз');
-    }).finally(() => onFinal());
+    .catch(() => onFail());
 };
 
 export {getData, sendData};

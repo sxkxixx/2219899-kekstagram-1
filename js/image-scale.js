@@ -1,7 +1,7 @@
-const image = document.querySelector('.img-upload__preview').querySelector('img');
-
 const STEP = 25;
 const RANGE = {min: 25, max: 100};
+
+const image = document.querySelector('.img-upload__preview').querySelector('img');
 const scaleSmaller = document.querySelector('.scale__control--smaller');
 const scaleBigger = document.querySelector('.scale__control--bigger');
 const scaleValue = document.querySelector('.scale__control--value');
