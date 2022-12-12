@@ -60,5 +60,5 @@ function debounce (callback, timeoutDelay = 500) {
   };
 }
 
-export {isRightString, isEscapeKey, showAlert, debounce, getRandomElementsArray, showLoadingPopup, showGetMethodError};
 
+export {isRightString, isEscapeKey, showAlert, debounce, getRandomElementsArray, showLoadingPopup, showGetMethodError};

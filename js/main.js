@@ -4,6 +4,7 @@ import {getData} from './api.js';
 import {showPictures} from './image-filter.js';
 import {showGetMethodError} from './util.js';
 
+
 getData(showPictures, showGetMethodError);
 renderUploadForm();
 createSlider();

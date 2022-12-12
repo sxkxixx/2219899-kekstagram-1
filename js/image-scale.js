@@ -24,4 +24,5 @@ const onResizeButtonClick = () => {
   scaleBigger.addEventListener('click', () => changeScaleValue(1));
 };
 
+
 export {onResizeButtonClick};

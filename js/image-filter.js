@@ -47,4 +47,5 @@ const showPictures = (pictures) => {
 
 };
 
+
 export {showPictures};

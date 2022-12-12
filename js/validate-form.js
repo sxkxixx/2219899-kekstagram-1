@@ -38,5 +38,5 @@ const validateForm = (form, hashtags, comment) => {
   return pristine.validate();
 };
 
-export {validateForm, onFocusPreventClose};
 
+export {validateForm, onFocusPreventClose};

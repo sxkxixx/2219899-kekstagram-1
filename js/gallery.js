@@ -27,4 +27,5 @@ const appendThumbnails = (array) => {
   pictureContainer.append(fragment);
 };
 
+
 export {appendThumbnails};

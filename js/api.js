@@ -29,4 +29,5 @@ const sendData = (onSuccess, onFail, body) => {
     .catch(() => onFail());
 };
 
+
 export {getData, sendData};
