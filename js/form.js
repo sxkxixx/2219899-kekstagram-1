@@ -1,8 +1,9 @@
-import {isEscapeKey, showAlert, showLoadingPopup} from './util.js';
+import {isEscapeKey} from './util.js';
 import {validateForm, onFocusPreventClose} from './validate-form.js';
 import {onFilterChange, disableSlider} from './image-effects.js';
 import {onResizeButtonClick} from './image-scale.js';
 import {sendData} from './api.js';
+import {showMessage} from './message.js';
 
 const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
 const image = document.querySelector('.img-upload__preview').querySelector('img');
@@ -16,7 +17,7 @@ const commentInput = document.querySelector('.text__description');
 const fileChooser = document.querySelector('.img-upload__start input[type=file]');
 
 const onEscapeKeydown = (evt) => {
-  if (isEscapeKey(evt)) {
+  if (isEscapeKey(evt) && document.querySelector('.error') === null) {
     closeOverlay();
   }
 };
@@ -27,7 +28,6 @@ function closeOverlay() {
   document.removeEventListener('keydown', onEscapeKeydown);
   cancelButton.removeEventListener('click', closeOverlay);
   disableSlider();
-  document.querySelector('.img-upload__message--loading').remove();
   form.reset();
 }
 
@@ -41,10 +41,10 @@ const openOverlay = () => {
   commentInput.onkeydown = (evt) => onFocusPreventClose(evt);
   hashtagsInput.onkeydown = (evt) => onFocusPreventClose(evt);
   effectsField.addEventListener('change', onFilterChange);
-  onResizeButtonClick();
 };
 
 const renderUploadForm = () => {
+  onResizeButtonClick();
   uploadButton.addEventListener('change', openOverlay);
   fileChooser.addEventListener('change', () => {
     const file = fileChooser.files[0];
@@ -57,13 +57,14 @@ const renderUploadForm = () => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     if (validateForm(form, hashtagsInput, commentInput)) {
-      sendData(
-        () => {
-          showLoadingPopup();
-          setTimeout(showAlert, 1000);
-        },
-        () => showAlert(true),
-        new FormData(evt.target));
+      sendData(() => {
+        showMessage('success');
+        setTimeout(closeOverlay, 500);
+      },
+      () => {
+        showMessage('error');
+      }
+      , new FormData(evt.target));
     }
   });
 };

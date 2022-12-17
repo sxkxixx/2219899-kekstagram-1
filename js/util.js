@@ -1,5 +1,3 @@
-import {closeOverlay} from './form.js';
-
 const getRandomNum = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
@@ -20,13 +18,6 @@ const getRandomElementsArray = (arr, count) => {
   return newArray;
 };
 
-const showLoadingPopup = () => {
-  const template = document.querySelector('#messages').content.querySelector('div');
-  const popup = template.cloneNode(true);
-  popup.style.zIndex = 100;
-  document.body.append(popup);
-};
-
 const showGetMethodError = () => {
   const template = document.querySelector('#get_error').content.querySelector('section');
   const popup = template.cloneNode(true);
@@ -34,21 +25,6 @@ const showGetMethodError = () => {
   popup.style.zIndex = 100;
   document.body.append(popup);
   button.addEventListener('click', () => popup.remove());
-};
-
-const showAlert = (isError) => {
-  const templateName = isError ? 'error' : 'success';
-  const template = document.querySelector(`#${templateName}`).content.querySelector('section');
-  const popup = template.cloneNode(true);
-  popup.style.zIndex = 100;
-  document.body.append(popup);
-  const button = popup.querySelector('button');
-  button.addEventListener('click', (evt) => {
-    if (evt.target.matches('button[class="success__button"]')) {
-      closeOverlay();
-    }
-    popup.remove();
-  });
 };
 
 
@@ -61,4 +37,4 @@ function debounce (callback, timeoutDelay = 500) {
 }
 
 
-export {isRightString, isEscapeKey, showAlert, debounce, getRandomElementsArray, showLoadingPopup, showGetMethodError};
+export {isRightString, isEscapeKey, debounce, getRandomElementsArray, showGetMethodError};
